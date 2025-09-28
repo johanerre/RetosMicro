@@ -22,3 +22,7 @@ Para verificar la entrada del pulsador, se define una variable en el loop boolea
 
 ## Montaje
 ![Montaje](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%201/IMÁGENES/Captura%20de%20pantalla%202025-09-06%20221143.png)
+
+## Link Tinkercad:
+
+https://www.tinkercad.com/things/8Uf0gC4On1T-punto-1-micro
