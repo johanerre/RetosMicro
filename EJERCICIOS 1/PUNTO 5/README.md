@@ -1,39 +1,50 @@
-# PASO A PASO EJERCICIO IV 
+# PASO A PASO EJERCICIO V 
 
-En este caso se construye un **contador binario** usando cuatro LEDs para representar valores desde 0 hasta 15.
-Cada vez que se presiona un pulsador, el contador aumenta su valor en 1 y lo muestra en binario mediante los LEDs. Cuando llega al número 15, el siguiente pulso hace que el conteo regrese a 0.
+Se plantea el **control del brillo de un LED** utilizando dos pulsadores.
+Uno de ellos sirve para aumentar el brillo, mientras que el otro lo disminuye.
+El control se realiza mediante PWM, que permite variar la intensidad del LED de forma gradual.
 
 ## Definición de variables  
 
-Se declara un arreglo de pines para los cuatro LEDs (ledPins), un pin para el pulsador (Pul), y dos variables de control:
+Se definen tres pines principales:
 
-- contador almacena el valor actual del conteo (de 0 a 15).
-- botonPresionado evita que el conteo se incremente más de una vez por cada pulsación.
+- Led donde está conectado el LED.
+- Pul1 pulsador para aumentar el brillo.
+- Pul2 pulsador para disminuir el brillo.
 
-![Variables](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%204/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20205438.png)
+Además, dos variables de control:
+
+- Brillo almacena el nivel actual del brillo (0 a 255).
+- paso determina cuánto se incrementa o disminuye el brillo cada vez que se presiona un botón.
+
+![Variables](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%205/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20214423.png)
 
 ## Void Setup
 
-En esta sección se permiten configurar los pines de los LEDs como salidas, asegurando que inicien apagados, y el pin del pulsador como entrada con resistencia pull-up interna, evitando lecturas falsas.
+Se configuran los pines:
 
-![Setup](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%204/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20205458.png)
+- El LED como salida.
+- Los pulsadores como entradas con resistencia interna Pull-Up,
+esto permite que al presionar el botón la lectura cambie de HIGH a LOW.
+
+![Setup](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%205/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20214503.png)
 
 ## Void loop
 
-Se lee el estado del pulsador:
+Aquí se revisa constantemente el estado de los dos pulsadores:
 
-- Si se presiona (lectura en LOW), y el botón no estaba presionado antes, se incrementa el contador.
-- Si el valor supera 15, se reinicia a 0.
-- Cuando el pulsador se suelta, la variable botonPresionado se resetea, permitiendo volver a contar en la siguiente pulsación.
+- Si se presiona Pul1, el valor de Brillo aumenta en cada pulsación.
+- Si supera 255, se mantiene en ese máximo.
+- Si se presiona Pul2, el valor de Brillo disminuye.
+- Si baja de 0, se mantiene en ese mínimo.
 
-Luego, mediante un bucle for, se encienden los LEDs según los bits activos del número binario.
-Esto se logra con una operación de máscara bit a bit (& y desplazamiento <<).
+Cada vez que se cambia el valor de Brillo, se actualiza con analogWrite(), que es la función encargada del PWM. El delay(200) evita lecturas repetidas cuando se mantiene el botón presionado.
 
-![Loop](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%204/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20205516.png)
+![Loop](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%205/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20214638.png)
 
 ## Montaje
 
-![Montaje](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%204/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20205535.png)
+![Montaje](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%205/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20214703.png)
 
 ## Link Tinkercad:
 
