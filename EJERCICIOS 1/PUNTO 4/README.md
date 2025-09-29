@@ -1,6 +1,7 @@
-# PASO A PASO EJERCICIO III  
+# PASO A PASO EJERCICIO IV 
 
-En este reto se requiere **simular una luz de emergencia**, haciendo uso de dos LEDs de distinto color y dos pulsadores. Un pulsador se encarga de activar el parpadeo alterno entre los LEDs, mientras que el otro pulsador detiene el parpadeo cuando se desee.
+En este caso se construye un **contador binario** usando cuatro LEDs para representar valores desde 0 hasta 15.
+Cada vez que se presiona un pulsador, el contador aumenta su valor en 1 y lo muestra en binario mediante los LEDs. Cuando llega al número 15, el siguiente pulso hace que el conteo regrese a 0.
 
 ## Definición de variables  
 
@@ -14,13 +15,13 @@ Además, se declaran dos variables booleanas:
 - Strover para controlar el estado general del sistema (encendido o apagado).
 - Estled1 para alternar el encendido de los LEDs durante el parpadeo. 
 
-![Variables](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%203/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20202818.png)
+![Variables](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%204/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20205438.png)
 
 ## Void Setup
 
 Aquí se definen los pines de los LEDs como salidas y los pines de los pulsadores como entradas. De esta forma, el Arduino puede leer los estados de los botones y controlar el encendido y apagado de los LEDs.
 
-![Setup](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%203/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20203028.png)
+![Setup](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%204/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20205458.png)
 
 ## Void loop
 
@@ -36,12 +37,12 @@ Mientras Strover esté activo, se genera un parpadeo alternado entre los dos LED
 
 Esto se repite con un pequeño retardo para dar el efecto de intermitencia. Dentro del bucle se mantiene la lectura de Pul2 para permitir detener el parpadeo en cualquier momento.
 
-![Loop](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%203/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20203050.png)
+![Loop](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%204/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20205516.png)
 
 ## Montaje
 
-![Montaje](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%203/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20203108.png)
+![Montaje](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%204/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20205535.png)
 
 ## Link Tinkercad:
 
-https://www.tinkercad.com/things/ioEgons1RPe-punto-3-micro
+https://www.tinkercad.com/things/i6FDCfASRai-punto-4-micro
