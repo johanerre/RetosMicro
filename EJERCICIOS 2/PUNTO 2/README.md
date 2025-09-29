@@ -4,36 +4,30 @@ Se busca **manejar el brillo de un LED usando una señal PWM** y un pulsador con
 
 ## Definición de variables  
 
-Se usa una variable para el botón y otra para llevar el conteo:
+Se definen las variables necesarias para el control del LED y del pulsador, así como el brillo y la dirección del cambio:
 
-![Variables](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%202/PUNTO%201/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20230850.png)
+![Variables](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%202/PUNTO%202/IMÁGENES/Captura%20de%20pantalla%202025-09-29%20004348.png)
 
 ## Void Setup
 
-Se configura el pin del pulsador como entrada y se inicia la comunicación serial para mostrar los valores del contador.
+En esta sección se configuran los pines del LED y del pulsador, y se habilita la interrupción externa sobre el pin donde está el pulsador. La línea attachInterrupt() activa una interrupción que ejecutará la función Dimmer cada vez que el pulsador detecte una señal descendente (FALLING).
 
-Luego se usa la función attachInterrupt() para vincular la interrupción con el pin del pulsador:
-
-- digitalPinToInterrupt(Pul) indica que se usará el pin 2.
-- ContadorPul es la función que se ejecutará cuando ocurra la interrupción.
-- RISING significa que la interrupción se activa cuando la señal pasa de LOW a HIGH (cuando se presiona el botón).
-
-![Setup](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%202/PUNTO%201/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20230910.png)
+![Setup](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%202/PUNTO%202/IMÁGENES/Captura%20de%20pantalla%202025-09-29%20004411.png)
 
 ## Void loop
 
-En este caso está vacío, porque no se necesita revisar constantemente el botón. Todo se controla desde la interrupción.
+En el bucle principal se realiza el cambio progresivo del brillo del LED. Si la dirección es HIGH, el brillo aumenta, y si es LOW, disminuye. Además, se controla que el brillo no sobrepase los límites (0 y 255).
 
-## Void contadorPul
+## Void Dimmer
 
-Cada vez que el botón es presionado, se ejecuta la función ContadorPul(). Dentro de esta función se incrementa el contador y se muestra el valor por el monitor serial:
+La función Dimmer() se activa automáticamente cada vez que se presiona el pulsador. Su función es cambiar la dirección del cambio del brillo, permitiendo que pase de aumentar a disminuir o viceversa.
 
-![Función](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%202/PUNTO%201/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20230937.png)
+![Función](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%202/PUNTO%202/IMÁGENES/Captura%20de%20pantalla%202025-09-29%20004430.png)
 
 ## Montaje
 
-![Montaje](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%202/PUNTO%201/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20231001.png)
+![Montaje](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%202/PUNTO%202/IMÁGENES/Captura%20de%20pantalla%202025-09-29%20004451.png)
 
 ## Link Tinkercad:
 
-https://www.tinkercad.com/things/dlR7Pc0wcBZ-punto-1-mircro-ii
+https://www.tinkercad.com/things/fyb2YFmxVIZ-punto-2-micro-ii
