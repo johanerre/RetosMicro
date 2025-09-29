@@ -16,18 +16,25 @@ El sistema mostrará en el Monitor Serial cuántos pulsos ocurrieron en un segun
 
 ## Void Setup
 
-En esta parte se configura el pin del LED como salida y se inicializa el Timer1 en modo CTC. Este modo permite ejecutar una acción automática (una interrupción) cada vez que el temporizador alcanza un valor específico. Con esto, el Timer1 generará una interrupción cada 500 milisegundos.
+- El puerto serial para visualizar los datos.
+- La interrupción externa en el pin 2.
+- El Timer1 en modo CTC para generar una interrupción cada 1 segundo.
 
-![Setup](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%202/PUNTO%203/IMÁGENES/Captura%20de%20pantalla%202025-09-29%20005907.png)
+Cada segundo el Timer1 genera una interrupción que ejecuta la rutina ISR(TIMER1_COMPA_vect).
 
-## Void loop
+![Setup](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%202/PUNTO%204/IMÁGENES/Captura%20de%20pantalla%202025-09-29%20011227.png)
 
-No posee ninguna tarea, acá se pueden ingresar otras tareas que se necesiten ejecutar.
+## Void contarPulsos
+
+Cada vez que el sensor o pulsador genera un pulso en el pin 2, se ejecuta la función contarPulsos(). Allí simplemente se incrementa el contador.
+Esta rutina se ejecuta automáticamente cada 1 segundo. Dentro de ella se calcula la frecuencia y se reinicia el contador para comenzar un nuevo conteo.
+
+![Función](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%202/PUNTO%204/IMÁGENES/Captura%20de%20pantalla%202025-09-29%20011333.png) 
 
 ## Montaje
 
-![Montaje](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%202/PUNTO%203/IMÁGENES/Captura%20de%20pantalla%202025-09-29%20005923.png)
+![Montaje](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%202/PUNTO%204/IMÁGENES/Captura%20de%20pantalla%202025-09-29%20011348.png)
 
 ## Link Tinkercad:
 
-https://www.tinkercad.com/things/0FwQpfd3qt9-punto-3-micro-ii
+https://www.tinkercad.com/things/cqR6krpB1lI-punto-4-micro-ii
