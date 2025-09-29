@@ -1,45 +1,35 @@
-int Leds[4] = {7, 8, 9, 10};
-int Puls[4] = {3, 4, 5, 6};
-int Longitud = 1;
-int Indice = 0;
-bool Fallo = false;
+#include <Arduino.h>
+
+int Led1 = 2;
+int Led2 = 4;
+
+void TaskLed1(void *pvParameters);
+void TaskLed2(void *pvParameters);
 
 void setup() {
-  for (int i = 0; i < 4; i++) {
-    pinMode(Leds[i], OUTPUT);
-    pinMode(Puls[i], INPUT_PULLUP);
+  pinMode(Led1, OUTPUT);
+  pinMode(Led2, OUTPUT);
+
+  xTaskCreate(TaskLed1, "Tarea LED1", 1024, NULL, 1, NULL);
+  xTaskCreate(TaskLed2, "Tarea LED2", 1024, NULL, 1, NULL);
+}
+
+void loop() {}
+
+void TaskLed1(void *pvParameters) {
+  for (;;) {
+    digitalWrite(Led1, HIGH);
+    vTaskDelay(pdMS_TO_TICKS(500));
+    digitalWrite(Led1, LOW);
+    vTaskDelay(pdMS_TO_TICKS(500));
   }
 }
 
-void loop() {
-  for (int i = 0; i < Longitud; i++) {
-    digitalWrite(Leds[i % 4], HIGH);
-    delay(500);
-    digitalWrite(Leds[i % 4], LOW);
-    delay(300);
+void TaskLed2(void *pvParameters) {
+  for (;;) {
+    digitalWrite(Led2, HIGH);
+    vTaskDelay(pdMS_TO_TICKS(1000));
+    digitalWrite(Led2, LOW);
+    vTaskDelay(pdMS_TO_TICKS(1000));
   }
-
-  Fallo = false;
-  Indice = 0;
-
-  while (Indice < Longitud && !Fallo) {
-    for (int i = 0; i < 4; i++) {
-      if (digitalRead(Puls[i]) == LOW) {
-        while (digitalRead(Puls[i]) == LOW);
-        if (i == (Indice % 4)) {
-          Indice++;
-        } else {
-          Fallo = true;
-        }
-      }
-    }
-  }
-
-  if (Fallo) {
-    Longitud = 1;
-  } else {
-    Longitud++;
-  }
-
-  delay(500);
 }
