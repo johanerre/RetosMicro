@@ -1,8 +1,6 @@
 # PASO A PASO EJERCICIO V 
 
-Se plantea el **control del brillo de un LED** utilizando dos pulsadores.
-Uno de ellos sirve para aumentar el brillo, mientras que el otro lo disminuye.
-El control se realiza mediante PWM, que permite variar la intensidad del LED de forma gradual.
+Se plantea el **control del brillo de un LED** utilizando dos pulsadores. Uno de ellos sirve para aumentar el brillo, mientras que el otro lo disminuye. El control se realiza mediante PWM, que permite variar la intensidad del LED de forma gradual.
 
 ## Definición de variables  
 
@@ -24,8 +22,7 @@ Además, dos variables de control:
 Se configuran los pines:
 
 - El LED como salida.
-- Los pulsadores como entradas con resistencia interna Pull-Up,
-esto permite que al presionar el botón la lectura cambie de HIGH a LOW.
+- Los pulsadores como entradas con resistencia interna Pull-Up, esto permite que al presionar el botón la lectura cambie de HIGH a LOW.
 
 ![Setup](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%205/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20214503.png)
 
