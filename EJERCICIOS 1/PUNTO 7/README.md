@@ -1,53 +1,46 @@
 # PASO A PASO EJERCICIO VII
 
-En este reto se crea un **juego de memoria tipo “Simón Dice”**, donde el Arduino muestra una secuencia de luces con varios LEDs, y el usuario debe repetirla correctamente usando los botones. Cada vez que el jugador acierta la secuencia, esta se hace más larga. Si se equivoca, el juego reinicia desde el inicio.
+En este reto se diseña un **semáforo para vehículos con paso peatonal**, controlado mediante un botón. El sistema inicia con la luz verde encendida. Cuando el peatón presiona el botón, el semáforo cambia de fase:
+
+Se enciende la luz amarilla, luego la luz roja y, finalmente se activa el LED peatonal por unos segundos,
+y después todo vuelve al estado inicial con luz verde encendida.
 
 ## Definición de variables  
 
-Se definen dos arreglos principales:
+Se declaran cuatro LEDs para representar las luces del semáforo y el cruce peatonal, además de un pulsador: 
 
-- Leds[]: almacena los pines donde están conectados los cuatro LEDs.
-- Pul[]: guarda los pines de los pulsadores.
-
-Otras variables de control:
-
-- longitud: determina cuántos pasos tiene la secuencia actual.
-- indice: lleva el control de cuántos pasos ha acertado el jugador.
-- fallo: indica si el jugador se equivocó en algún momento.
-
-![Variables](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%206/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20221626.png)
+![Variables](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%207/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20223247.png)
 
 ## Void Setup
 
-Se inicializan todos los pines:
+Se configuran todos los pines de los LEDs como salidas y el pulsador como entrada con Pull-Up interna, para poder detectar su pulsación sin usar resistencias externas. El semáforo inicia en verde (paso habilitado para vehículos). Además, se usa un while inicial para esperar a que el botón no esté presionado al comenzar.
 
-- Los LEDs como salidas,
-- Los pulsadores como entradas con resistencia Pull-Up interna, lo cual permite detectar cuándo se presiona un botón (lectura LOW).
-
-![Setup](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%206/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20221639.png)
+![Setup](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%207/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20223359.png)
 
 ## Void loop
 
-* ###  1. Mostrar la secuencia
+* ###  1. Paso amarillo (precaución)
 
-Se encienden los LEDs uno por uno según la longitud actual. Se usa el operador %4 para repetir el orden en caso de que la secuencia sea más larga que 4. Cada LED se enciende y apaga con pequeños retardos para que el jugador pueda verla claramente.
+Al detectar la pulsación, la luz verde se apaga y la amarilla se enciende por 2 segundos.
 
-* ### 2. Esperar la respuesta del jugador
+* ### 2. Paso rojo + peatonal
 
-Se inicializa fallo en false e indice en 0 para comenzar a evaluar desde el inicio. Luego se entra en un bucle que se mantiene activo mientras el jugador no haya fallado y no haya terminado la secuencia.
+Luego se apaga la amarilla, y se enciende la roja y el LED peatonal. Esto representa que los vehículos deben detenerse y los peatones pueden cruzar. El tiempo de cruce es de 5 segundos.
 
-Cuando el jugador presiona un botón, el programa verifica si corresponde con el LED encendido en esa posición. Si acierta, el contador indice avanza; si se equivoca, fallo se vuelve TRUE.
+* ### Volver a estado inicial
 
-* ### 3. Verificar resultado
+Después de los 5 segundos:
 
-- Si el jugador falló, el juego reinicia volviendo la longitud a 1.
-- Si acertó, se aumenta la longitud de la secuencia para el siguiente nivel.
+- Se apaga el LED peatonal y la luz roja,
+- Se enciende nuevamente la verde.
 
-![Loop](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%206/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20221712.png)
+Así, el semáforo vuelve a su funcionamiento normal. Para evitar que el botón quede presionado y repita la secuencia, se agrega un (while) hasta que se suelte:
+
+![Loop](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%207/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20223415.png)
 
 ## Montaje
 
-![Montaje](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%206/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20221726.png)
+![Montaje](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%207/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20223432.png)
 
 ## Link Tinkercad:
 
