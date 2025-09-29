@@ -14,29 +14,33 @@ Además, se declaran dos variables booleanas:
 - Strover para controlar el estado general del sistema (encendido o apagado).
 - Estled1 para alternar el encendido de los LEDs durante el parpadeo. 
 
-![Variables]()
+![Variables](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%203/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20202818.png)
 
 ## Void Setup
 
-En esta sección se inicializa la comunicación serial a 9600 baudios, para poder visualizar el estado del pulsador en el monitor serial. Luego se configura el pin del pulsador como entrada con resistencia Pull-Up interna, lo cual garantiza que por defecto su lectura sea HIGH y cambie a LOW al presionarlo. Cada pin correspondiente a los LEDs se define como salida digital, permitiendo controlar su encendido y apagado desde el programa. Debido a que los leds se definieron como un arreglo de 8 posiciones, se utiliza un ciclo for para poder definirlo.
+Aquí se definen los pines de los LEDs como salidas y los pines de los pulsadores como entradas. De esta forma, el Arduino puede leer los estados de los botones y controlar el encendido y apagado de los LEDs.
 
-![Setup]()
+![Setup](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%203/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20203028.png)
 
 ## Void loop
 
- Se realiza la lectura del estado actual del pulsador mediante la variable de tipo booleano Pulestado. El valor leído se envía al monitor serial para verificar en tiempo real si el pulsador se encuentra presionado o no. Posteriormente, se evalúa la condición mediante una estructura if-else:
+Dentro del loop(), se leen los estados de los dos pulsadores:
 
-- Si el pulsador está en HIGH (no presionado), se ejecuta un ciclo for que recorre el arreglo de forma ascendente, encendiendo cada LED uno a uno con una pequeña pausa de 50 ms entre cada encendido.
+- Si se presiona el primer pulsador (Pul1), se activa la variable Strover para iniciar el parpadeo.
+- Si se presiona el segundo pulsador (Pul2), se desactiva el sistema (Strover = LOW) y se detiene el parpadeo.
 
-- Si el pulsador está en LOW (presionado), se ejecuta un ciclo for descendente que apaga cada LED de manera inversa, también con un retardo de 50 ms entre cada acción.
+Mientras Strover esté activo, se genera un parpadeo alternado entre los dos LEDs:
 
-Este comportamiento genera un efecto visual secuencial, encendiendo o apagando los LEDs dependiendo del estado del pulsador.
+- Led1 se enciende mientras Led2 se apaga.
+- Luego alternan sus estados.
 
-![Loop]()
+Esto se repite con un pequeño retardo para dar el efecto de intermitencia. Dentro del bucle se mantiene la lectura de Pul2 para permitir detener el parpadeo en cualquier momento.
+
+![Loop](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%203/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20203050.png)
 
 ## Montaje
 
-![Montaje]()
+![Montaje](https://github.com/johanerre/RetosMicro/blob/main/EJERCICIOS%201/PUNTO%203/IMÁGENES/Captura%20de%20pantalla%202025-09-28%20203108.png)
 
 ## Link Tinkercad:
 

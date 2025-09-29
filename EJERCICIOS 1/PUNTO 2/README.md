@@ -19,7 +19,6 @@ En esta sección se inicializa la comunicación serial a 9600 baudios, para pode
  Se realiza la lectura del estado actual del pulsador mediante la variable de tipo booleano Pulestado. El valor leído se envía al monitor serial para verificar en tiempo real si el pulsador se encuentra presionado o no. Posteriormente, se evalúa la condición mediante una estructura if-else:
 
 - Si el pulsador está en HIGH (no presionado), se ejecuta un ciclo for que recorre el arreglo de forma ascendente, encendiendo cada LED uno a uno con una pequeña pausa de 50 ms entre cada encendido.
-
 - Si el pulsador está en LOW (presionado), se ejecuta un ciclo for descendente que apaga cada LED de manera inversa, también con un retardo de 50 ms entre cada acción.
 
 Este comportamiento genera un efecto visual secuencial, encendiendo o apagando los LEDs dependiendo del estado del pulsador.
