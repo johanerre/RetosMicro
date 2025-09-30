@@ -7,7 +7,8 @@ void setup() {
 
 void loop() {
   Wire.beginTransmission(8); // Dirección del esclavo
-  Wire.write('7');
+  Wire.write('7'); // Dato a enviar
   Wire.endTransmission();
+  Serial.println("Dato enviado al esclavo");
   delay(1000);
 }
