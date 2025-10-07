@@ -40,3 +40,4 @@ La tarea TaskLeerSensor solicita una nueva lectura al sensor cada 2 segundos, ob
 
 ## Montaje
 
+![Montaje](https://github.com/johanerre/RetosMicro/blob/main/PARCIAL/IMÁGENES/Captura%20de%20pantalla%202025-10-06%20200019.png)
